@@ -20,6 +20,9 @@ public class Main {
 		Reiziger r2 = new Reiziger("de Bruijn", sqlDate, 7, "G");
 		Reiziger r3 = new Reiziger("de Bruijn", sqlDate, 7, "G, D, C");
 		
+		System.out.println("printall \n");
+		printAll(rDao);
+		
 		System.out.println("findAll \n" + rDao.findAll());
 		System.out.println();
 		
@@ -46,6 +49,7 @@ public class Main {
 		System.out.println("Opgeslagen reizigers");
 		for(Reiziger persoon : rList) {
 			System.out.println(persoon);
+			System.out.println(persoon.getChipkaarten());
 		}
 		System.out.println("\n");
 	}

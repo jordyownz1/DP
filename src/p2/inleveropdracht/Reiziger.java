@@ -2,6 +2,7 @@ package p2.inleveropdracht;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reiziger {
 	
@@ -10,7 +11,7 @@ public class Reiziger {
 	private int reizigerID;
 	private String voorletters;
 	private String tussenvoegsel;
-	private ArrayList<OVChipkaart> chipkaarten = new ArrayList<OVChipkaart>();
+	private List<OVChipkaart> chipkaarten = new ArrayList<OVChipkaart>();
 	
 	public Reiziger(String nm, Date gbd, int rID, String vl, String tv) {
 		naam = nm;
@@ -69,13 +70,13 @@ public class Reiziger {
 		this.tussenvoegsel = tussenvoegsel;
 	}
 
-	public ArrayList<OVChipkaart> getChipkaarten() {
+	public List<OVChipkaart> getChipkaarten() {
 		return chipkaarten;
 	}
 
-	public ArrayList<OVChipkaart> voegChipkaartToe(OVChipkaart chipkaart){
-		chipkaarten.add(chipkaart);
-		return chipkaarten;
+	public void setChipkaarten(List<OVChipkaart> chipkaart){
+		chipkaarten = chipkaart;
+		
 	}
 
 	public boolean equals(Object obj) {

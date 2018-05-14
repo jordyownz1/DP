@@ -46,7 +46,9 @@ public class Main {
 		System.out.println("Opgeslagen reizigers");
 		for(Reiziger persoon : rList) {
 			System.out.println(persoon);
+			System.out.println(persoon.);
 		}
 		System.out.println("\n");
+		
 	}
 }

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao {
+	
+	OVChipkaartOracleDaoImpl oDao = new OVChipkaartOracleDaoImpl();
 
 	private static ArrayList<Reiziger> deReizigers = new ArrayList<Reiziger>();
 
@@ -21,6 +23,7 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
 
 	public List<Reiziger> findAll() {
 		try {
+			
 			Statement stmt = conn.createStatement();
 			String strQuery = "SELECT * FROM REIZIGER";
 			ResultSet myresult = stmt.executeQuery(strQuery);
@@ -30,7 +33,14 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
 												myresult.getInt("REIZIGERID"), 
 												myresult.getString("VOORLETTERS"),
 												myresult.getString("TUSSENVOEGSEL"));
+												
 				deReizigers.add(reiziger);
+			}
+			
+			for(Reiziger r : deReizigers) {
+				List <OVChipkaart> chipkaarten = new ArrayList <OVChipkaart>();
+				chipkaarten = oDao.findByReiziger(r);
+				r.setChipkaarten(chipkaarten);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
